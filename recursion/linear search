@@ -5,10 +5,14 @@ public class Linearsearch {
 
     }
     static int search(int []arr,int target,int index){
+        if (arr[index] == arr.length) {
+            return -1;
+        }
         if(arr[index]== target){
             return index;
-        }
+        } else {
         return search(arr,target,index+1);
+               }
     }
 
 }
