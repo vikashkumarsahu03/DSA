@@ -1,0 +1,32 @@
+public class Sorting {
+
+    public static void main(String[] args) {
+        int[] arr = {1,2,4,3,6,5};
+        bubbleSort(arr, arr.length - 1, 0);
+        System.out.println(Arrays.toString(arr));
+    }
+
+
+    static void bubbleSort(int[] arr, int endIndex, int currentIndex) {
+
+        if (endIndex == 0) {
+            return;
+        }
+
+
+        if (currentIndex < endIndex) {
+
+            if (arr[currentIndex] > arr[currentIndex + 1]) {
+                int temp = arr[currentIndex];
+                arr[currentIndex] = arr[currentIndex + 1];
+                arr[currentIndex + 1] = temp;
+            }
+
+
+            bubbleSort(arr, endIndex, currentIndex + 1);
+        } else {
+
+            bubbleSort(arr, endIndex - 1, 0);
+        }
+    }
+}
