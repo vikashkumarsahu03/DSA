@@ -1,0 +1,36 @@
+public class Sort {
+
+    public static void main(String[] args) {
+        int[] arr = {1,2,4,3,6,5};
+        Selectionsort(arr, arr.length , 0,0);
+        System.out.println(Arrays.toString(arr));
+    }
+
+
+    static void Selectionsort(int[] arr, int endIndex, int currentIndex, int max) {
+
+        if (endIndex == 0) {
+            return;
+        }
+
+
+        if (currentIndex < endIndex) {
+
+
+            if (arr[currentIndex] > arr[max]) {
+                Selectionsort(arr,endIndex,currentIndex+1,currentIndex);
+
+            }else {
+
+                Selectionsort(arr, endIndex, currentIndex + 1,max);
+            }
+        } else {
+            int temp=arr[max];
+            arr[max]=arr[endIndex-1];
+            arr[endIndex-1]=temp;
+
+
+            Selectionsort(arr, endIndex - 1, 0,0);
+        }
+    }
+}
