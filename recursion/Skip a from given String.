@@ -1,0 +1,19 @@
+ublic class StringQuestions {
+    public static void main(String[] args) {
+        System.out.println(skipa("baccad"));
+    }
+    static String skipa( String str){
+        if(str.isEmpty()){
+            return "";
+        }
+        char ch=str.charAt(0);
+        if(ch=='a') {
+            return skipa(str.substring(1));
+        } else {
+            return ch+skipa(str.substring(1));
+
+
+        }
+
+    }
+    }
