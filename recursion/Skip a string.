@@ -1,6 +1,6 @@
 public class StringQuestions {
     public static void main(String[] args) {
-        System.out.println(skipapple("applebaccad"));
+        System.out.println(skipapple("caapplebaccad"));
     }
     static String skipapple( String str){
         if(str.isEmpty()){
