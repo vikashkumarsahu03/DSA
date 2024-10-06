@@ -8,7 +8,7 @@ public class Backtracking {
         };
         System.out.println(Allpaths("",maze,0,0));
     }
-static ArrayList<String > Allpaths(String p,boolean maze[][],int r,int c){
+ static ArrayList<String > Allpaths(String p,boolean maze[][],int r,int c){
         if(r== maze.length-1 &&c== maze[0].length-1){
             ArrayList<String>list=new ArrayList<>();
             list.add(p);
@@ -33,7 +33,7 @@ static ArrayList<String > Allpaths(String p,boolean maze[][],int r,int c){
         }
 
         if(r>0) {
-            ArrayList<String> left =Allpaths(p + 'U', maze, r, r - 1);
+            ArrayList<String> left =Allpaths(p + 'U', maze, r-1, c );
             list.addAll(left);
         }
         if(c>0) {
