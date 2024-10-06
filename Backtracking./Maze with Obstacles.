@@ -1,0 +1,38 @@
+public class Backtracking {
+    public static void main(String[] args){
+        boolean [][] maze={
+                {true,true,true},
+                {true,false,true},
+                {true,true,true}
+
+        };
+        System.out.println(Mazeobstackles("",maze,0,0));
+    }
+static ArrayList<String > Mazeobstackles(String p,boolean maze[][],int r,int c){
+        if(r== maze.length-1 &&c== maze[0].length-1){
+            ArrayList<String>list=new ArrayList<>();
+            list.add(p);
+            return list;
+        }
+        ArrayList<String>list=new ArrayList<>();
+        if (maze[r][c]==false){
+            return list;
+
+        }
+        if(r< maze.length-1){
+            ArrayList<String>down=Mazeobstackles(p+'D',maze,r+1,c);
+            list.addAll(down);
+        }
+        if(c< maze[0].length-1){
+            ArrayList<String>right=Mazeobstackles(p+'R',maze,r,c+1);
+            list.addAll(right);
+
+        }
+
+
+        return list;
+
+    }
+
+
+}
