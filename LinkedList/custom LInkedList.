@@ -1,0 +1,148 @@
+public class CustomLinkedList {
+    public static void main(String[] args) {
+        LinkedList list=new LinkedList();
+        list.insertfirst(3);
+        list.insertfirst(4);
+        list.insertfirst(8);
+        list.insertfirst(17);
+        list.insertlast(30);
+        System.out.println(list.find(100));
+        list.deletefirst();
+        list.display();
+        list.deletelast();
+        list.display();
+        list.delete(1);
+        list.display();
+
+    }
+}
+class LinkedList{
+    private Node head;
+    private Node tail;
+    private int size;
+    public LinkedList(){
+        this.size=0;                          
+    }
+    public void insert(int val,int index){
+        if (index==0){
+            insertfirst(val);
+            return;
+        }
+        if(index==size){
+            insertlast(val);
+            return;
+        }
+        Node temp=head;
+        for (int i=1;i<index;i++){
+            temp=temp.next;
+
+        }
+        Node node=new Node(val,temp.next);
+        temp.next=node;
+        size++;
+
+
+    }
+    public Node find(int value){
+        Node node=head;
+        while (node!=null){
+            if(node.value==value){
+                return node;
+            }
+            node=node.next;
+        }
+        return null;
+    }
+    public void deletefirst(){
+        head=head.next;
+        if(head==null){
+            tail=null;
+        }
+        size--;
+
+
+    }
+    public void deletelast(){
+        if (size<=1){
+            deletefirst();
+            return;
+
+        }
+        Node secondlast=get(size-2);
+        tail=secondlast;
+        tail.next=null;
+
+
+
+    }
+    public Node get(int index){
+        Node node=head;
+        for (int i=0;i<index;i++){
+            node=node.next;
+
+        }
+        return node;
+
+    }
+    public void delete(int index){
+        if (index==0){
+            deletefirst();
+            return;
+        }
+        if (index==size-1){
+            deletelast();
+            return;
+        }
+        Node prev=get(index-1);
+        prev.next=prev.next.next;
+
+
+
+
+    }
+    public void insertlast(int value){
+        if(tail==null){
+            insertfirst(value);
+            return;
+
+        }
+        Node node=new Node(value);
+        tail.next=node;
+        tail=node;
+        size++;
+
+    }
+    public void insertfirst(int value){
+        Node node=new Node(value);
+        node.next=head;
+        head=node;
+        if(tail==null){
+            tail=head;
+        }
+        size+=1;
+    }
+    public void display(){
+        Node temp=head;
+        while (temp !=null){
+            System.out.print(temp.value + " -> ");
+            temp=temp.next;
+        }
+        System.out.println("end");
+    }
+
+    private  class Node{
+        private int value;
+        private Node next;
+        public Node(int value){
+            this.value=value;
+        }
+        public Node(int value,Node next){
+            this.value=value;
+            this.next=next;
+        }
+        public String toString() {
+            return String.valueOf(value);
+        }
+
+    }
+}
