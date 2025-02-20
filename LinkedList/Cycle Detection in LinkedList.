@@ -1,4 +1,4 @@
-   public boolean check(){
+    public boolean hascycle(Node head){
         Node fast=head;
         Node slow=head;
         while (fast!=null && fast.next!=null){
