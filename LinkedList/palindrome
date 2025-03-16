@@ -1,0 +1,47 @@
+ public   ListNode  reverseList(ListNode head){
+        if (head==null){
+            return head;
+        }
+        ListNode prev=null;
+        ListNode pres=head;
+        ListNode next=pres.next;
+        while (pres!=null){
+            pres.next=prev;
+            prev=pres;
+            pres=next;
+            if (next!=null) {
+                next = next.next;
+            }
+        }
+        return prev;
+
+    }
+    public  ListNode middleNode(ListNode head){
+        ListNode f=head;
+        ListNode s=head;
+        while (f!=null && f.next!=null){
+            s=s.next;
+            f=f.next.next;
+        }
+        return s;
+    }
+    // palindrome of LL.
+    public boolean ispalindrome(ListNode head){
+        ListNode mid=middlenNode(head);
+        ListNode headSecond=reverseList(mid);
+        ListNode reverseHead=headSecond;
+        while (head!=null && headSecond!=null){
+            if (head.value!=headSecond.value){
+                break;
+            }
+            head=head.next;
+            headSecond=headSecond.next;
+        }
+        reverseList(reverseHead);
+        if(head==null || headSecond ==null){
+            return true;
+        }
+        return false;
+
+
+    }
